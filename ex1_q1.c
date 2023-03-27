@@ -11,7 +11,7 @@
 #define GRADES_SIZE 30
 #define LINE_SIZE 100
 #define NUM_OF_STUDENTS 256
-#define RES_GRADES_FILE_NAME "all_std.txt"
+#define RES_GRADES_FILE_NAME "all_std.log"
 
 typedef struct student {
 	char name[NAME_SIZE];
@@ -75,6 +75,7 @@ int main(int argc, char *argv[]) {
 
 	fclose(all_std); // close all_std.txt file
 	report_data_summary(num_of_students);
+	free(pids);
 	return 0;
 }
 
@@ -154,7 +155,7 @@ void data_to_struct(FILE* read_file) {
 		num_of_students++;
 	}
 
-	fprintf(stderr, "process: %d file : %s number of students : %d\n", pid, file_name, num_of_students);
+	fprintf(stderr, "process: %d file: %s number of students: %d\n", pid, file_name, num_of_students);
 
 	fclose(temp_file);
 	return;
